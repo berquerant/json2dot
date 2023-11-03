@@ -1,0 +1,11 @@
+{"src":{"id":"n11"},"dst":{"id":"n12"}}
+{"src":{"id":"n12","group":"g1"},"dst":{"id":"n21","group":"g2"}}
+{"src":{"id":"n31","group":"g3","export":true},"dst":{"id":"n11","group":"g1"}}
+{"src":{"id":"nx","external":"universe"},"dst":{"id":"n11"}}
+{"src":{"id":"nx","another":"NX"},"dst":{"id":"n31"}}
+{"src":{"id":"n31"},"dst":{"id":"n12"}}
+{"src":{"id":"n21","kind":"flow"},"dst":{"id":"n21"}}
+{"src":{"id":"n31"},"dst":{"id":"n11"}}
+{"src":{"id":"nx"},"dst":{"id":"n11"}}
+{"src":{"id":"n12"},"dst":{"id":"nx"}}
+{"src":{"id":"ny","another":"NY"},"dst":{"id":"nx"}}
