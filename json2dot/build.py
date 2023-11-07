@@ -16,6 +16,7 @@ class DescMap:
     """node_id to desc[key] map."""
 
     def __init__(self, rows: list[Row], key: str | None = None) -> None:
+        self.__key = key
         self.__map = (
             {
                 **{r.src.id: r.src.desc[key] for r in rows if key in r.src.desc},
@@ -29,6 +30,10 @@ class DescMap:
     def map(self) -> dict[str, str]:
         """Unwrap DescMap."""
         return self.__map
+
+    @property
+    def key(self) -> str | None:
+        return self.__key
 
 
 class NodeNameMap(DescMap):

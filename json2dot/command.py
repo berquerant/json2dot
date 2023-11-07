@@ -57,7 +57,13 @@ class Draw:
     def __add_node(self, g: graphviz.dot.Dot, node_id: str) -> None:
         node = self.nodes.map[node_id]
         name = self.node_name_map.get(node_id)
-        label = build_label({"name": name, **node.desc}) if node.desc else name
+        if node.desc:
+            label_args = {"name": name, **node.desc}
+            if self.node_name_map.key in label_args:
+                del label_args[self.node_name_map.key]
+            label = build_label(label_args)
+        else:
+            label = name
         tooltip = build_tooltip(asdict(self.stat.report(node_id)))
         args = {
             "name": node_id,
