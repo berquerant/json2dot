@@ -57,10 +57,12 @@ class Draw:
     def __add_node(self, g: graphviz.dot.Dot, node_id: str) -> None:
         node = self.nodes.map[node_id]
         name = self.node_name_map.get(node_id)
+        label_args = {"name": name}
         if node.desc:
-            label_args = {"name": name, **node.desc}
-            if self.node_name_map.key in label_args:
-                del label_args[self.node_name_map.key]
+            label_args.update(node.desc)
+        if self.node_name_map.key in label_args:
+            del label_args[self.node_name_map.key]
+        if len(label_args) > 1:
             label = build_label(label_args)
         else:
             label = name
