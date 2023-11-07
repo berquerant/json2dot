@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 from textwrap import dedent
 
+from .__version__ import __version__
 from .build import GroupNameMap, NodeNameMap, build_nodemap, build_stat
 from .command import Debug, Draw
 from .mathx import Clamp
@@ -49,8 +50,13 @@ def main() -> int:
     parser.add_argument("--group_key", "-g", action="store", type=str, help="select group name from node desc")
     parser.add_argument("--out", "-o", action="store", type=str, help="filename for saving the rendered image")
     parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--version", action="store_true", help="print version")
 
     args = parser.parse_args()
+
+    if args.version:
+        print(__version__)
+        return 0
 
     nodes = build_nodemap(iter(sys.stdin))
     stat = build_stat(rows=nodes.source, ignore_selfloop=not args.display_selfloop)
