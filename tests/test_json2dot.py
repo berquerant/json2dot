@@ -5,6 +5,8 @@ from contextlib import contextmanager
 from pathlib import Path
 from unittest import TestCase
 
+from json2dot.__version__ import __version__
+
 
 @contextmanager
 def cd(p: Path):
@@ -42,7 +44,7 @@ class TestEndToEnd(TestCase):
             [
                 "pip",
                 "install",
-                "dist/json2dot-0.1.0.tar.gz",
+                f"dist/json2dot-{__version__}.tar.gz",
             ],
             pwd,
         )
