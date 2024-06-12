@@ -9,7 +9,7 @@ from .build import GroupNameMap, NodeNameMap, build_nodemap, build_stat
 from .command import Debug, Draw
 from .mathx import Clamp
 from .row import Node
-from .scale import Scaler, Setting
+from .scale import ClampSetting, FixedSetting, Scaler, Setting
 from .stat import Ranking, Stat
 
 
@@ -47,6 +47,7 @@ def main() -> int:
     parser.add_argument("--fontsize_min", action="store", type=int, default=8, help="Default: 8")
     parser.add_argument("--fontsize_max", action="store", type=int, default=48, help="Default: 48")
     parser.add_argument("--display_selfloop", "-s", action="store_true")
+    parser.add_argument("--no_scale", action="store_true", help="draw nodes and edges with the same size (min)")
     parser.add_argument("--name_key", "-k", action="store", type=str, help="select node name from node desc")
     parser.add_argument("--group_key", "-g", action="store", type=str, help="select group name from node desc")
     parser.add_argument("--out", "-o", action="store", type=str, help="filename for saving the rendered image")
@@ -91,7 +92,10 @@ def main() -> int:
         return 0
 
     def new_setting(x: int, y: int) -> Setting:
-        return Setting(clamp=Clamp.new(x, y))
+        c = Clamp.new(x, y)
+        if args.no_scale:
+            return FixedSetting(clamp=c)
+        return ClampSetting(clamp=c)
 
     scaler = Scaler(
         ranking=ranking,

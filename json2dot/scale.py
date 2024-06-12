@@ -1,19 +1,39 @@
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 from .mathx import Clamp
 from .stat import Ranking
 
 
-@dataclass
-class Setting:
+class Setting(ABC):
     """Scale range."""
 
-    clamp: Clamp
+    @abstractmethod
+    def __call__(self, percentile: float) -> float:
+        """Return scaled value."""
+
+
+class ClampSetting(Setting):
+    """Scale range using clamp."""
+
+    def __init__(self, clamp: Clamp):
+        self.clamp = clamp
 
     def __call__(self, percentile: float) -> float:
         """Return scaled value."""
         v = (self.clamp.maximum - self.clamp.minimum) * percentile / 100 + self.clamp.minimum
         return self.clamp(v)
+
+
+class FixedSetting(Setting):
+    """Fixed scale."""
+
+    def __init__(self, clamp: Clamp):
+        self.clamp = clamp
+
+    def __call__(self, percentile: float) -> float:
+        """Return scaled value."""
+        return self.clamp.maximum
 
 
 @dataclass

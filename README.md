@@ -2,8 +2,11 @@
 
 ```
 ❯ python -m json2dot.cli -h
-usage: json2dot [-h] [--penwidth_min PENWIDTH_MIN] [--penwidth_max PENWIDTH_MAX] [--arrowsize_min ARROWSIZE_MIN] [--arrowsize_max ARROWSIZE_MAX] [--weight_min WEIGHT_MIN] [--weight_max WEIGHT_MAX]
-                [--fontsize_min FONTSIZE_MIN] [--fontsize_max FONTSIZE_MAX] [--display_selfloop] [--name_key NAME_KEY] [--group_key GROUP_KEY] [--out OUT] [--debug] [--version]
+usage: json2dot [-h] [--penwidth_min PENWIDTH_MIN] [--penwidth_max PENWIDTH_MAX]
+                [--arrowsize_min ARROWSIZE_MIN] [--arrowsize_max ARROWSIZE_MAX]
+                [--weight_min WEIGHT_MIN] [--weight_max WEIGHT_MAX] [--fontsize_min FONTSIZE_MIN]
+                [--fontsize_max FONTSIZE_MAX] [--display_selfloop] [--no_scale]
+                [--name_key NAME_KEY] [--group_key GROUP_KEY] [--out OUT] [--debug] [--version]
 
 Generate dot source from jsonl considering node degrees and edge weights.
 
@@ -38,6 +41,7 @@ options:
   --fontsize_max FONTSIZE_MAX
                         Default: 48
   --display_selfloop, -s
+  --no_scale            draw nodes and edges with the same size (min)
   --name_key NAME_KEY, -k NAME_KEY
                         select node name from node desc
   --group_key GROUP_KEY, -g GROUP_KEY
