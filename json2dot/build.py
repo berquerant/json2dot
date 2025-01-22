@@ -62,7 +62,7 @@ class GroupNameMap(DescMap):
         return self.map.get(node_id, self.nil_group)
 
     @classmethod
-    def build_stat(cls, nodes: NodeMap, key: Callable[[Node], str | None], ignore_selfloop=False) -> Stat:
+    def build_stat(cls, nodes: NodeMap, key: Callable[[Node], str | None], ignore_selfloop: bool = False) -> Stat:
         rows = nodes.source
         if ignore_selfloop:
             rows = [x for x in rows if x.src.id != x.dst.id]
@@ -89,7 +89,7 @@ def __build_stat(rows: list[Row]) -> Stat:
     return s
 
 
-def build_stat(rows: list[Row], key: Callable[[Node], str | None] | None = None, ignore_selfloop=False) -> Stat:
+def build_stat(rows: list[Row], key: Callable[[Node], str | None] | None = None, ignore_selfloop: bool = False) -> Stat:
     """
     Build new Stat from rows.
 

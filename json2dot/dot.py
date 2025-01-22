@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+from typing import cast
 
 import graphviz
 
@@ -10,7 +11,7 @@ class Graph:
 
     @property
     def source(self) -> str:
-        return self.__g.source
+        return cast(str, self.__g.source)
 
     def render(self, out: Path) -> None:
         p = out.absolute()

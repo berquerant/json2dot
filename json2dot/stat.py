@@ -75,7 +75,7 @@ class Stat:
         """Return a new default Stat."""
         return Stat(NodeStat(), EdgeStat())
 
-    def add(self, src_node_id: str, dst_node_id: str):
+    def add(self, src_node_id: str, dst_node_id: str) -> None:
         """Add an edge to stat."""
         self.__nodes.add(src_node_id)
         self.__nodes.add(dst_node_id)
