@@ -4,6 +4,7 @@ init:
 
 .PHONY: ci
 ci:
+	pipenv check
 	pipenv run ci
 
 .PHONY: clean
