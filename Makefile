@@ -1,11 +1,6 @@
 .PHONY: init
 init:
-	@pipenv install --dev
-
-.PHONY: ci
-ci:
-	pipenv check
-	pipenv run ci
+	@uv sync
 
 .PHONY: clean
 clean:
@@ -22,4 +17,28 @@ TEST_IMAGE := tmp/debug.svg
 .PHONY: $(TEST_IMAGE)
 $(TEST_IMAGE): $(TEST_SOURCE)
 	@mkdir -p tmp
-	python -m json2dot.cli -o $@ < $<
+	uv run python -m json2dot.cli -o $@ < $<
+
+.PHONY: check
+check:
+	uvx tox -e black,ruff,mypy -p 3
+
+.PHONY: test
+test:
+	uvx tox -e py312
+
+.PHONY: ci
+ci:
+	uvx tox -e black,ruff,mypy,py312 -p 4
+
+.PHONY: dev
+dev:
+	pip install --editable .
+
+.PHONY: install
+install:
+	pip install .
+
+.PHONY: dist
+dist:
+	uv run python setup.py sdist

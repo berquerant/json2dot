@@ -39,7 +39,7 @@ class TestEndToEnd(TestCase):
 
     def test_build_and_help(self):
         pwd = self.pwd
-        run(["pipenv", "run", "dist"], pwd)
+        run(["make", "dist"], pwd)
         run(
             [
                 "pip",
