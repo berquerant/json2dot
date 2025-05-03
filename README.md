@@ -56,7 +56,6 @@ options:
 Generate an example image from [source](tests/test.json).
 
 ```
-pipenv sync
-pipenv shell
+make init
 make tmp/debug.svg
 ```
