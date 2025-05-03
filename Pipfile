@@ -12,6 +12,7 @@ black = "*"
 tox = "*"
 mypy = "*"
 ruff = "*"
+safety = "*"
 
 [requires]
 python_version = "3.12"
