@@ -1,6 +1,6 @@
 [project]
 name = "json2dot"
-version = "0.4.0"
+version = "0.5.0"
 description = "Generate dot source from jsonl considering node degrees and edge weights."
 requires-python = ">=3.12"
 readme = "README.md"
