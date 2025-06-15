@@ -21,15 +21,15 @@ $(TEST_IMAGE): $(TEST_SOURCE)
 
 .PHONY: check
 check:
-	uvx tox -e black,ruff,mypy -p 3
+	uv run tox -e black,ruff,mypy -p 3
 
 .PHONY: test
 test:
-	uvx tox -e py312
+	uv run tox -e py312
 
 .PHONY: ci
 ci:
-	uvx tox -e black,ruff,mypy,py312 -p 4
+	uv run tox -e black,ruff,mypy,py312 -p 4
 
 .PHONY: dev
 dev:
