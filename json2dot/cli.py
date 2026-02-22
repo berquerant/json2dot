@@ -19,8 +19,7 @@ def main() -> int:
 
     parser = argparse.ArgumentParser(
         prog="json2dot",
-        description=dedent(
-            """\
+        description=dedent("""\
         Generate dot source from jsonl considering node degrees and edge weights.
 
         Load edges from stdin, format:
@@ -34,8 +33,7 @@ def main() -> int:
 
         NODE_ID is string. Other keys are optional node descriptions.
         No need to give descriptions to all nodes, descriptions of nodes with the same NODE_ID are merged.
-        """
-        ),
+        """),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--penwidth_min", action="store", type=int, default=1, help="Default: 1")

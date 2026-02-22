@@ -120,13 +120,10 @@ def build_stat(rows: list[Row], key: Callable[[Node], str | None] | None = None,
 def build_label(obj: dict[str, Any]) -> str:
     """Build human readable label."""
     keys = sorted(obj.keys())
-    rows = [
-        f"""<tr>
+    rows = [f"""<tr>
 <td align="left"><b>{k}</b></td>
 <td align="right">{obj[k]}</td>
-</tr>"""
-        for k in keys
-    ]
+</tr>""" for k in keys]
     table = f'<table border="0">{"".join(rows)}</table>'
     return f"""<
 {table}
