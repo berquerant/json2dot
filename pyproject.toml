@@ -26,7 +26,7 @@ build-backend = "setuptools.build_meta"
 dev = [
     "black>=25.1.0",
     "mypy>=1.16.0",
-    "ruff>=0.11.13",
+    "ruff>=0.15.12",
     "setuptools",
     "tox>=4.26.0",
 ]
